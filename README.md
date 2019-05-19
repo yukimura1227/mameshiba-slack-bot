@@ -212,3 +212,15 @@ Add the subdomain hubot should connect to. If you web URL looks like
 
 You may want to get comfortable with `heroku logs` and `heroku restart` if
 you're having issues.
+
+## heroku setup
+```
+heroku login
+heroku create mameshiba-slack-bot
+heroku addons:create redistogo:nano
+heroku config:set HUBOT_SLACK_TOKEN=[your token]
+# check bot url
+heroku apps:info | grep "Web URL"
+# set bot url
+heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=[your bot app url]
+```
