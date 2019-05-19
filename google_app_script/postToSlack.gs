@@ -1,6 +1,5 @@
 var POST_URL  = 'xxxxxxxxxx';
 var USER_NAME = 'post-to-slack-bot';  // 通知時に表示されるユーザー名
-var ICON      = ':dog2:';  // 通知時に表示されるアイコン
 var DATA_START_ROW = 2;
 
 var CHANNEL_COLUMN_INDEX     = 2;
@@ -12,13 +11,12 @@ function postToSlack() {
   createTrigger();
   var jsonData = {};
   jsonData.username   = USER_NAME;
-  jsonData.icon_emoji = ICON;
 
   var options = {};
   options.method = "post";
   options.contentType = "application/json";
 
-  var sheet = SpreadsheetApp.getActiveSheet(); 
+  var sheet = SpreadsheetApp.getActiveSheet();
   var lastRow = sheet.getLastRow();
   for(var i = DATA_START_ROW; i <= lastRow; i++) {
     var channel = sheet.getRange(i, CHANNEL_COLUMN_INDEX).getValue();
