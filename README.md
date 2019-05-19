@@ -224,3 +224,6 @@ heroku apps:info | grep "Web URL"
 # set bot url
 heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=[your bot app url]
 ```
+
+## slack set up
+invite this bot to channel that will be post
