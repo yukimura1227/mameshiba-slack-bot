@@ -20,7 +20,7 @@
     "hubot-slack": "^4.7.1"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "11.9.x"
   },
   "devDependencies": {
     "generator-hubot": "^0.4.0"
