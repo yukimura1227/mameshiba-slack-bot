@@ -9,6 +9,7 @@ var WORDS_COLUMN_START_INDEX = 4;
 var WORDS_COLUMN_END_INDEX   = WORDS_COLUMN_START_INDEX + 5;
 
 function postToSlack() {
+  createTrigger();
   var jsonData = {};
   jsonData.username   = USER_NAME;
   jsonData.icon_emoji = ICON;
@@ -34,5 +35,15 @@ function postToSlack() {
 
       UrlFetchApp.fetch(POST_URL, options);
     }
+  }
+}
+
+function createTrigger() {
+  if(ScriptApp.getProjectTriggers().length == 0) {
+    ScriptApp.newTrigger('postToSlack')
+      .timeBased()
+      .onWeekDay(ScriptApp.WeekDay.MONDAY)
+      .atHour(10)
+      .create();
   }
 }
