@@ -32,7 +32,7 @@ module.exports = function(robot) {
     if( rand_0_99 < probability ) {
       for(let word of words) {
         robot.send({ room: channel }, word);
-        await sleep(3000);
+        await sleep(5000);
       }
     }
   });
