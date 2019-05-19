@@ -42,6 +42,7 @@ function createTrigger() {
       .timeBased()
       .onWeekDay(ScriptApp.WeekDay.MONDAY)
       .atHour(10)
+      .nearMinute(20)
       .create();
   }
 }
