@@ -126,3 +126,6 @@ git push heroku master
 
 ## slack set up
 invite this bot to channel that will be post
+
+## System Structure
+![System Structure](https://raw.githubusercontent.com/yukimura1227/mameshiba-slack-bot/master/docs/system_structure.png)
