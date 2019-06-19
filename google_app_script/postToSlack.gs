@@ -30,7 +30,7 @@ function postToSlack() {
       var message = 'mameshiba ' + '#' + channel + ' ' + probability;
       for(var j = WORDS_COLUMN_START_INDEX; j <= WORDS_COLUMN_END_INDEX; j++ ) {
         if(sheet.getRange(i, j).getValue()) {
-          message += ' ' + sheet.getRange(i, j).getValue();
+          message += ' ' + sheet.getRange(i, j).getValue().replace(/[\r\n]+/g, '');
         }
       }
       jsonData.text = message;
