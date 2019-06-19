@@ -18,7 +18,7 @@ function postToSlack() {
   options.method = "post";
   options.contentType = "application/json";
 
-  var sheet = SpreadsheetApp.getActiveSheet(); 
+  var sheet = SpreadsheetApp.getActiveSheet();
   var lastRow = sheet.getLastRow();
   var currentWeekdayStr = WEEKDAY_ARRAY[new Date().getDay()];
   for(var i = DATA_START_ROW; i <= lastRow; i++) {
