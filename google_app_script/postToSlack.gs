@@ -18,7 +18,7 @@ function postToSlack() {
   options.method = "post";
   options.contentType = "application/json";
 
-  var sheet = SpreadsheetApp.getActiveSheet(); 
+  var sheet = SpreadsheetApp.getActiveSheet();
   var lastRow = sheet.getLastRow();
   var currentWeekdayStr = WEEKDAY_ARRAY[new Date().getDay()];
   for(var i = DATA_START_ROW; i <= lastRow; i++) {
@@ -30,7 +30,7 @@ function postToSlack() {
       var message = 'mameshiba ' + '#' + channel + ' ' + probability;
       for(var j = WORDS_COLUMN_START_INDEX; j <= WORDS_COLUMN_END_INDEX; j++ ) {
         if(sheet.getRange(i, j).getValue()) {
-          message += ' ' + sheet.getRange(i, j).getValue();
+          message += ' ' + sheet.getRange(i, j).getValue().replace(/[\r\n]+/g, '');
         }
       }
       jsonData.text = message;
