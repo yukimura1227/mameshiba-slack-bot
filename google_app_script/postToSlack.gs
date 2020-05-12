@@ -1,3 +1,5 @@
+// this script is here
+// -> https://github.com/yukimura1227/mameshiba-slack-bot/edit/master/google_app_script/postToSlack.gs
 var POST_URL  = 'xxxxxxxxxx';
 var USER_NAME = 'post-to-slack-bot';  // 通知時に表示されるユーザー名
 var DATA_START_ROW = 2;
