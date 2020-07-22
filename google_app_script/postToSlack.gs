@@ -12,6 +12,7 @@ var WORDS_COLUMN_END_INDEX      = WORDS_COLUMN_START_INDEX + 5;
 var WEEKDAY_ARRAY = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.' ,'Sat.'] // NOTE: Date#getDay() -> 0: Sun. 1: Mon ...
 
 function postToSlack() {
+  console.info('start postToSlack()');
   createTrigger();
   var jsonData = {};
   jsonData.username   = USER_NAME;
@@ -24,10 +25,12 @@ function postToSlack() {
   var lastRow = sheet.getLastRow();
   var currentWeekdayStr = WEEKDAY_ARRAY[new Date().getDay()];
   for(var i = DATA_START_ROW; i <= lastRow; i++) {
+    console.info(i);
     var channel = sheet.getRange(i, CHANNEL_COLUMN_INDEX).getValue();
     var targetWeekDay = sheet.getRange(i, TARGET_WEEKDAY_COLUMN_INDEX).getValue();
 
     if(channel && targetWeekDay == currentWeekdayStr){
+      // console.info(i);
       var probability = sheet.getRange(i, PROBABILITY_COLUMN_INDEX).getValue();
       var message = 'mameshiba ' + '#' + channel + ' ' + probability;
       for(var j = WORDS_COLUMN_START_INDEX; j <= WORDS_COLUMN_END_INDEX; j++ ) {
@@ -37,11 +40,12 @@ function postToSlack() {
       }
       jsonData.text = message;
       options.payload = JSON.stringify(jsonData);
-      Logger.log(message);
+      console.info(message);
 
       UrlFetchApp.fetch(POST_URL, options);
     }
   }
+  console.info('end postToSlack()');
 }
 
 function createTrigger() {
